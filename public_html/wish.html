@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+      
+    function addWish()
+    {
+        var v = require("./dbModule");
+        alert(v.myDateTime());
+        
+        alert("hello");
+        return true;
+        
+    }
+    
+    $(document).ready(function(){
+        
+        $("wBtn").click(function(){
+            console.log($("#name").val());
+        });
+        
+        $("#omq").click(function(){
+            //alert("button clicked");
+            $("#qs").html("This is another question -");
+            //alert($("#op1").html());
+            /*$("#op1").text("Another Option 1");
+            $("#op2").html("Option 1");
+            $("#op3").html("Option 1");
+            $("#op4").html("Option 1");*/
+        });
+        $("input[type='radio']").click(function(){
+            var radioValue = $("input[name='optradio']:checked").val();
+            //alert(radioValue);
+            if(radioValue === "c"){
+                $("#cAlert").show();
+                $("#wAlert").hide();
+                //alert(radioValue);
+            }
+            else{
+                $("#wAlert").show();
+                $("#cAlert").hide();
+                //alert(radioValue);
+            }
+        });
+        
+    });
+</script>
+  <style>
+      
+      #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('bgimage.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    opacity: 0.2;
+    filter:alpha(opacity=20);
+}
+
+    #foot {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+  </style>
+<body style="padding-top: 65px;">
+
+<div id="background"></div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" id="mynav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="home.html"><i>happyBirthdayMotu.com</i></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="home.html">Home</a></li>
+      <li><a href="wish.html">Wish Happy Bday</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Games
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Really Cool Game</a></li>
+          <li><a href="#">Another Really Cool Game</a></li>
+        </ul>
+      </li>
+      <li><a href="#">About Her</a></li>
+      <li><a href="#">Contact Her</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li> &nbsp;&nbsp;<button class="btn navbar-btn btn-primary" data-toggle="tooltip" title="Hooray!">Gimme a Thumbs up</button> &nbsp;&nbsp;</li>
+        
+    </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="well well-lg">
+                
+                <form class="form-horizontal" action="/data" method="POST">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Name:</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Message:</label>
+    <div class="col-sm-10"> 
+      <input type="textarea" class="form-control" id="msg" name="message" placeholder="Enter your message...">
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-primary" id="wBtn">Wish</button>
+    </div>
+  </div>
+                </form>
+                
+            </div>
+                
+        </div>
+        <div class="col-sm-6"><div class="well well-lg"><h2>Wishes so far -</h2><p><strong>Swabhi</strong> - Happy bday Motu :)</p></div></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12">
+        <div class="well well-lg">
+            <div class="col-sm-4"><center><a href="#">Terms and conditions</a></center></div>
+            <div class="col-sm-4"><center><a href="#">Send Feedback</a></center></div>
+            <div class="col-sm-4"><center>copyright@swabhi</center></div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

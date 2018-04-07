@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>happyBirthdayMotu.com</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        
+        var qFlag = 0;
+        var quiz = [
+            {
+                "question": "Jada tela lageiba purba ru Motu ra keteta chuti tila?",
+                "options": [
+                    "0",
+                    "Bahut",
+                    "2",
+                    "53.7"
+                ],
+                "answer": 2
+            },
+            {
+                "question": "Jada tela lageila pare Motu ra keteta chuti hela?",
+                "options": [
+                    "1",
+                    "4",
+                    "Bahut",
+                    "53.8"
+                ],
+                "answer": 1
+            }, 
+            {
+                "question": "Motu ki manisha?",
+                "options": [
+                    "Square",
+                    "Round",
+                    "Chepta",
+                    "Lamba"
+                ],
+                "answer": 1
+            },
+            {
+                "question": "Motu patala habaku chahiba ra gote reason kana?",
+                "options": [
+                    "One piece pindhi pariba",
+                    "Khata tale aram se gali pariba",
+                    "Mota loka nku comment mari pariba",
+                    "Rough and tough dekha jiba"
+                ],
+                "answer": 0
+            },
+            {
+                "question": "Motu ku traveller re feriba ku kaiki vala lageni?",
+                "options": [
+                    "Traveller ra color ta dress saita match hueni",
+                    "Traveller word ta pasand nai",
+                    "Traveller ra diki nai",
+                    "Loka chu cha sound karanti and olheila bele samasta nku baje"
+                ],
+                "answer": 3
+            },
+            {
+                "question": "Motu traveller re asila bele gote gundrumuha mahila nka goda chakudi dei tila vul re. Se mahila janaka nija kasta darsaiba pai kan kahiki chileile?",
+                "options": [
+                    "Fuuuuuuuccckkkkkk!",
+                    "Banda!",
+                    "Aaaahhhhhhhhh - lu dum dahibara",
+                    "Aaiioo!"
+                ],
+                "answer": 3
+            },
+            {
+                "question": "Motu office kimiti jae?",
+                "options": [
+                    "Jogging",
+                    "Ola auto",
+                    "Bilei pithi re basiki",
+                    "via Helikipotara"
+                ],
+                "answer": 1
+            },
+            {
+                "question": "Motu office kimiti gale better huanta?",
+                "options": [
+                    "Round heiki gadi gadi gale",
+                    "Ola cab",
+                    "Uber cab",
+                    "Uber outstation"
+                ],
+                "answer": 0
+            },
+            {
+                "question": "Motu kou chord re sabuthu adhika time atki tila?",
+                "options": [
+                    "D minor",
+                    "E minor",
+                    "E",
+                    "D"
+                ],
+                "answer": 3
+            },
+            {
+                "question": "Motu kan dui thara ru adhika continuosly kari pareni?",
+                "options": [
+                    "Gugu",
+                    "Susu",
+                    "Soiba",
+                    "Mini militia kheliba"
+                ],
+                "answer": 3
+            },
+            {
+                "question": "Motu ra favourite TV series?",
+                "options": [
+                    "Friends",
+                    "Game of thrones",
+                    "How I met your mother",
+                    "The Flash"
+                ],
+                "answer": 0
+            },
+            {
+                "question": "Motu ra favourite superhero?",
+                "options": [
+                    "Shaktiman",
+                    "The Flash",
+                    "Batman",
+                    "Bongo"
+                ],
+                "answer": 1
+            },
+            {
+                "question": "Superpower that Motu wishes she had?",
+                "options": [
+                    "Super speed",
+                    "Invisibility",
+                    "Super strength",
+                    "Teleportation"
+                ],
+                "answer": 3
+            },
+            {
+                "question": "Motu ra dhala au majboot danta ra secret kana?",
+                "options": [
+                    "Agaru dina ku di thara brush karu tila",
+                    "Duplicate plastic danta lageichi",
+                    "God-gifted",
+                    "Patanjali Dantkanti"
+                ],
+                "answer": 0
+            },
+            {
+                "question": "Motu ghare surprise daba katha kahaku kahi tila?",
+                "options": [
+                    "Peteni",
+                    "Uncle",
+                    "Kun Bhaina",
+                    "Shawn Michaels"
+                ],
+                "answer": 2
+            },
+            {
+                "question": "What does Petu love the most out of these?",
+                "options": [
+                    "Motu ra gala",
+                    "Motu's hair",
+                    "Motu ra cleanliness",
+                    "Motu ra punctuality"
+                ],
+                "answer": 0
+            },
+            {
+                "question": "Motu kan chidei dei tila?(Mark the most appropriete optoin)",
+                "options": [
+                    "Chhena",
+                    "Petu ra gote dadhi",
+                    "Guitar ra string",
+                    "Petu ra naka ra bala"
+                ],
+                "answer": 1
+            },
+            {
+                "question": "Motu ku KKR kaiki vala lage?",
+                "options": [
+                    "Gautam Gambhir pai",
+                    "SRK pai",
+                    "KKR ra batting pai",
+                    "Kolkata jaga ta vala lage"
+                ],
+                "answer": 0
+            },
+            {
+                "question": "Soila bele motu ku kie protect kare?",
+                "options": [
+                    "Indian army",
+                    "Petu",
+                    "AR Rehman",
+                    "Panda"
+                ],
+                "answer": 3
+            },
+            {
+                "question": "Motu ra adhika mota haba pachare kahara hata achi?",
+                "options": [
+                    "Thakur ra hata aci",
+                    "Kahara hata nai, Goda thai pare",
+                    "Barak Obama",
+                    "Petu"
+                ],
+                "answer": 3
+            }
+        ];
+        
+        $("#thumbsUp").click(function(){
+            $("#thumbsUp").html("Thanks!");
+        });
+        
+        $("#omq").click(function(){
+            
+            $("#cAlert").hide();
+            $("#wAlert").hide();
+            
+            $("#qs").html("" + quiz[qFlag].question);
+            
+            
+            $("#o0").html('' + quiz[qFlag].options[0]);
+            $("#o1").html('' + quiz[qFlag].options[1]);
+            $("#o2").html('' + quiz[qFlag].options[2]);
+            $("#o3").html('' + quiz[qFlag].options[3]);
+            
+            $("#op0").val("w");
+            $("#op1").val("w");
+            $("#op2").val("w");
+            $("#op3").val("w");
+            
+            //$("#op1").value = "w";
+            //$("#op2").value = "w";
+            //$("#op3").value = "w";
+            
+            
+            
+            $("#op" + quiz[qFlag].answer).val("c");
+            //alert($("#op" + quiz[qFlag].answer).val());
+            
+            //$("o" + quiz[qFlag].answer).
+            
+            
+            
+            qFlag++;
+            if(qFlag === quiz.length)
+                qFlag = 0;
+            //if(qFlag === 20)
+                //qFlag = 0;
+        });
+        
+        
+        
+        $("input[type='radio']").click(function(){
+            //alert("hi");
+            var radioValue = $("input[name='optradio']:checked").val();
+            //alert(radioValue);
+            if(radioValue === "c"){
+                $("#cAlert").show();
+                $("#wAlert").hide();
+                //alert(radioValue);
+            }
+            else{
+                $("#wAlert").show();
+                $("#cAlert").hide();
+                //alert(radioValue);
+            }
+        });
+        
+        
+    });
+</script>
+  <style>
+      
+      #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('bgimage.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    opacity: 0.2;
+    filter:alpha(opacity=20);
+}
+
+    #foot {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.yourDiv{
+  position:absolute;
+  top: 123px;
+}
+  </style>
+<body style="padding-top: 65px;">
+
+<div id="background"></div>
+
+<!--<div id="tup">vfdsf</div>-->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" id="mynav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="home.html"><i>happyBirthdayMotu.com</i></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="home.html">Home</a></li>
+      <li><a href="wish.html">Wish Happy Bday</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Games
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="game1.html">Really Cool Game</a></li>
+          <li><a href="game2.html">Another Really Cool Game</a></li>
+        </ul>
+      </li>
+      <li><a href="aboutHer.html">About Her</a></li>
+      <li><a href="letter.html">The Letter</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li> &nbsp;&nbsp;<button class="btn navbar-btn btn-primary" data-toggle="tooltip" title="Hooray!" id="thumbsUp">Gimme a Thumbs up</button> &nbsp;&nbsp;</li>
+        
+    </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-sm-6">
+          
+          <!--<center><h1><i><strong>HAPPY BDAY...</strong></i></h1></center>-->
+          
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <!--<ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>-->
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="la.jpg" alt="Los Angeles" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>Los Angeles</h3>
+          <p>LA is always so much fun!</p>
+        </div>-->
+      </div>
+
+      <div class="item">
+        <img src="11.jpg" alt="Chicago" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>Chicago</h3>
+          <p>Thank you, Chicago!</p>
+        </div>-->
+      </div>
+        
+      <div class="item">
+        <img src="12.jpg" alt="Chicago" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>Chicago</h3>
+          <p>Thank you, Chicago!</p>
+        </div>-->
+      </div>
+        
+      <div class="item">
+        <img src="13.jpg" alt="Chicago" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>Chicago</h3>
+          <p>Thank you, Chicago!</p>
+        </div>-->
+      </div>
+        
+      <div class="item">
+        <img src="sheni5.jpg" alt="Chicago" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>Chicago</h3>
+          <p>Thank you, Chicago!</p>
+        </div>-->
+      </div>
+    
+      <div class="item">
+        <img src="ny.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+      <div class="item">
+        <img src="14.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="15.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="16.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="17.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="18.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="19.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="20.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="21.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="22.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="23.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="24.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="25.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="26.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="27.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="28.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="29.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="30.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="31.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="32.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        
+        <div class="item">
+        <img src="33.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="34.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="35.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        
+        <div class="item">
+        <img src="36.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        
+        <div class="item">
+        <img src="37.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+        
+        <div class="item">
+        <img src="38.jpg" alt="New York" style="width:100%;">
+        <!--<div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>-->
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+          <!--<center><h1><i><strong>TO MOTU...</strong></i></h1></center>-->
+          
+          
+      </div>
+      <div class="col-sm-6" style="padding-top: 10px;">
+        <div class="row" >
+            <div class="col-sm-6">
+                <div class="well well-lg">
+                    <h2>Descrption</h2>      
+                    <p>12th Feb - Motu's Bday! Let's wish her well!</p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="well well-lg">
+                    <h2>About me</h2>      
+                    <p>Not much.. All about Motu today! Its her Bday!</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="well well-lg">
+                    <h2>Quick quiz</h2>      
+                    <p id="qs">Motu ghare tile kana pindhi thae?</p>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" value="w" id="op0"><span id="o0">Helmet</span></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" value="w" id="op1"><span id="o1">Jeans / T-shirt</span></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" value="c" id="op2"><span id="o2">Mono-color shirt / Gariba pant</span></label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio" value="w" id="op3"><span id="o3">Suit</span></label>
+                    </div>
+                    <div class="alert alert-success" hidden="true" id="cAlert">
+                        <strong>Correct!</strong>
+                    </div>
+                    <div class="alert alert-danger" hidden="true" id="wAlert">
+                        <strong>Wrong!</strong>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="omq">One more question</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div> <br>
+    
+    <div class="row">
+        <div class="col-sm-12">
+        <div class="well well-lg">
+            <div class="col-sm-4"><center><a href="#">Terms and conditions</a></center></div>
+            <div class="col-sm-4"><center><a href="#">Send Feedback</a></center></div>
+            <div class="col-sm-4"><center>copyright@swabhi</center></div>
+        </div>
+        </div>
+    </div>
+  
+</div>
+
+
+
+
+</body>
+</html>

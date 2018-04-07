@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>happyBirthdayMotu.com</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        
+        var qFlag = 0;
+        var quiz = [
+            {
+                "question": "Jada tela lageiba purba ru Motu ra keteta chuti tila?",
+                "options": [
+                    "0",
+                    "Bahut",
+                    "2",
+                    "53.7"
+                ],
+                "answer": 2
+            },
+            {
+                "question": "Jada tela lageila pare Motu ra keteta chuti hela?",
+                "options": [
+                    "1",
+                    "4",
+                    "Bahut",
+                    "53.8"
+                ],
+                "answer": 1
+            }, 
+            {
+                "question": "Motu ki manisha?",
+                "options": [
+                    "Square",
+                    "Round",
+                    "Chepta",
+                    "Lamba"
+                ],
+                "answer": 1
+            }];
+        
+        $("#omq").click(function(){
+            
+            $("#cAlert").hide();
+            $("#wAlert").hide();
+            
+            $("#qs").html("" + quiz[qFlag].question);
+            
+            
+            $("#o0").html('' + quiz[qFlag].options[0]);
+            $("#o1").html('' + quiz[qFlag].options[1]);
+            $("#o2").html('' + quiz[qFlag].options[2]);
+            $("#o3").html('' + quiz[qFlag].options[3]);
+            
+            $("#op0").val("w");
+            $("#op1").val("w");
+            $("#op2").val("w");
+            $("#op3").val("w");
+            
+            //$("#op1").value = "w";
+            //$("#op2").value = "w";
+            //$("#op3").value = "w";
+            
+            
+            
+            $("#op" + quiz[qFlag].answer).val("c");
+            //alert($("#op" + quiz[qFlag].answer).val());
+            
+            //$("o" + quiz[qFlag].answer).
+            
+            
+            
+            qFlag++;
+            //if(qFlag === 20)
+                //qFlag = 0;
+        });
+        
+        
+        
+        $("input[type='radio']").click(function(){
+            //alert("hi");
+            var radioValue = $("input[name='optradio']:checked").val();
+            //alert(radioValue);
+            if(radioValue === "c"){
+                $("#cAlert").show();
+                $("#wAlert").hide();
+                //alert(radioValue);
+            }
+            else{
+                $("#wAlert").show();
+                $("#cAlert").hide();
+                //alert(radioValue);
+            }
+        });
+        
+        
+    });
+</script>
+  <style>
+      
+      #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('sheni4.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    opacity: 0.4;
+    filter:alpha(opacity=40);
+}
+
+    #foot {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.yourDiv{
+  position:absolute;
+  top: 123px;
+}
+  </style>
+<body style="padding-top: 65px;">
+
+<div id="background"></div>
+
+<!--<div id="tup">vfdsf</div>-->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" id="mynav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="home.html"><i>happyBirthdayMotu.com</i></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="home.html">Home</a></li>
+      <li><a href="wish.html">Wish Happy Bday</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Games
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="game1.html">Really Cool Game</a></li>
+          <li><a href="game2.html">Another Really Cool Game</a></li>
+        </ul>
+      </li>
+      <li><a href="aboutHer.html">About Her</a></li>
+      <li><a href="letter.html">The Letter</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li> &nbsp;&nbsp;<button class="btn navbar-btn btn-primary" data-toggle="tooltip" title="Hooray!">Gimme a Thumbs up</button> &nbsp;&nbsp;</li>
+        
+    </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12">
+          <div class="well well-lg" style="opacity: 0.6">
+              <p style='font-family: Apple Chancery, cursive;'>
+                  Dear Motu,<br><br>
+
+
+First thing’s first. Since you like wishes so much-<br><br>
+
+<b class="text-center lead" style="font-size: 20px;"><strong>“Happy Birthday to you”</strong></b><br><br>
+
+
+Now that that's out of the way, I'll get straight to the letter. So here goes -<br><br>
+
+
+We've come a long way. We really have. Not that I ever thought we won't. But when we first started I never thought of us in this light. Sure I loved all that initial stuff. But in all that fun I never paused for a moment to realize that we were kind of meant to go the distance. However sooner or later we both realized that what we have is soooooooooooo… permanent. So forever. And we weren't even surprised when we realized this. Felt like no big deal even though we both know that it really is. Most people don't find this in a lifetime. We just got lucky. Especially me. I wasn't even looking for you! Where the fuck did you come from!?? But thanks anyway. Thanks for coming. Thanks for ever being born. Thanks to Uncle he got posted to BBSR and you had to move there. Thanks to the 89.8 % score (wasn't happy with it.. ) that brought me to Basic Science and I had to move to BBSR. Thanks to the fact that I dropped a year to Study for IIT (One of the worst decisions ever in the history of mankind). And the list goes on.. What I'm trying to say is that I am really thankful to this chain of events. The good ones. The bad ones. And everything in between. I thank them all. And it all started with 1 particularly vital moment -<br><br>
+
+
+It was 12th Feb 1995, 10 pm. The baby-me had no idea that this was the best day of his life. Because something happened on that day that led to something and then something and finally brought that little idiot to you. And he knew he was in the right place. He had found <strong class="text-center lead" style='font-size: 25px;'>his best friend in the world</strong>.<br><br>
+
+Cheers.<br>
+Petu<br><br>
+
+PS - “Have a great day. And a happy life. Happy Birthday again!”
+              </p>
+          </div>
+      </div>
+  </div> <br>
+    
+    <div class="row">
+        <div class="col-sm-12">
+        <div class="well well-lg">
+            <div class="col-sm-4"><center><a href="#">Terms and conditions</a></center></div>
+            <div class="col-sm-4"><center><a href="#">Send Feedback</a></center></div>
+            <div class="col-sm-4"><center>copyright@swabhi</center></div>
+        </div>
+        </div>
+    </div>
+  
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!-- Inspired by: https://codepen.io/donovanh/pen/dYqxNb -->
+
+<head>
+    <style>
+        .rating {
+  border: none;
+}
+
+.rating > input {
+  display: none;
+}
+
+.smiley {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: url(http://recodenow.com/wp-content/uploads/2018/03/smiley-1.png) no-repeat;
+  background-position: 0 0; 
+  cursor: pointer;
+  animation: fave-smiley 1s steps(28);
+}
+
+.rating > input:not(:checked) ~.smiley:hover {
+  background-position: -2800px 0;
+  transition: background 1s steps(28);
+}
+
+.rating > input:checked ~.smiley {
+   animation-fill-mode: forwards;
+}
+
+.rating > input:not(:checked) ~.smiley {
+   background-position: 0 0;
+}
+
+@keyframes fave-smiley {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2800px 0;
+  }
+}
+    </style>
+</head>
+<body>
+<div class="rating">
+  <input type="checkbox" autocomplete="off" id="smile" name="smiley" />
+  <label class="smiley" for="smile" title="Smile" aria-hidden="true"></label>
+</div>
+    
+</body>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+canvas {
+    border:5px solid #00FF33;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    
+    
+
+}
+</style>
+</head>
+<body onload="startGame()" style="padding-top: 65px;">
+    
+<nav class="navbar navbar-inverse navbar-fixed-top" id="mynav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="home.html"><i>happyBirthdayMotu.com</i></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="home.html">Home</a></li>
+      <li><a href="wish.html">Wish Happy Bday</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Games
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Really Cool Game</a></li>
+          <li><a href="#">Another Really Cool Game</a></li>
+        </ul>
+      </li>
+      <li><a href="#">About Her</a></li>
+      <li><a href="#">Contact Her</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li> &nbsp;&nbsp;<button class="btn navbar-btn btn-primary" data-toggle="tooltip" title="Hooray!">Gimme a Thumbs up</button> &nbsp;&nbsp;</li>
+        
+    </ul>
+    </div>
+  </div>
+</nav>
+    
+<script>
+
+var myGamePiece, bullet = [], bulletCount = 0, flag = 0, flag1 = 0, wishes = [], score = 0, hbdList = [], flag2 = 0, walls = [], cake;
+
+function startGame() {
+    myGamePiece = new component(35, 35, "red", 20, 320, "player");
+    cake = new component(55, 55, "red", 400, 2, "cake");
+    var wall = new component(400, 10, "#00FF33", 0, 300, "wall");
+    walls.push(wall);
+    wall = new component(400, 10, "#00FF33", 80, 220, "wall");
+    walls.push(wall);
+    wall = new component(400, 10, "#00FF33", 0, 140, "wall");
+    walls.push(wall);
+    wall = new component(400, 10, "#00FF33", 80, 60, "wall");
+    walls.push(wall);
+    /*wall = new component(10, 40, "#00FF33", 80, 190, "wall");
+    walls.push(wall);
+    wall = new component(380, 10, "#00FF33", 80, 180, "wall");
+    walls.push(wall);
+    wall = new component(10, 160, "#00FF33", 450, 20, "wall");
+    walls.push(wall);
+    wall = new component(150, 10, "#00FF33", 300, 20, "wall");
+    walls.push(wall);*/
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 370;
+        this.context = this.canvas.getContext("2d");
+        
+        //div = document.getElementById('gameCanvas');
+        //div.appendChild(canvas);
+        
+        /*var newItem = document.createElement("LI");       // Create a <li> node
+        var textnode = document.createTextNode("Water");  // Create a text node
+        newItem.appendChild(textnode);                    // Append the text to <li>
+
+        var list = document.getElementById("gameCanvas");    // Get the <ul> element to insert a new node
+        list.insertBefore(this.canvas, list.childNodes[0]);  // Insert <li> before the first child of <ul>
+ */       
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.interval = setInterval(updateGameArea, 20);
+        window.addEventListener('touchmove', function (e) {
+            myGameArea.x = e.touches[0].screenX;
+            myGameArea.y = e.touches[0].screenY;
+        })
+    }, 
+    clear : function(){
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+function component(width, height, color, x, y, entity) {
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y; 
+    this.entity = entity;
+    this.update = function() {
+        ctx = myGameArea.context;
+        if(this.entity === "wall")
+        {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+        if(this.entity === "player" || this.entity === "cake" || this.entity === "happyBday")
+        {
+            var img;
+           
+            if(this.entity === "player")
+                img = document.getElementById("player");
+            if(this.entity === "cake")
+                img = document.getElementById("cake");
+            if(this.entity === "happyBday")
+                img = document.getElementById("happyBday");
+
+            //var img = document.getElementById("balloon");
+            //ctx.scale(1, 0.2);
+            //ctx.imageSmoothingEnabled = false;
+            ctx.drawImage(img, this.x, this.y, this.width, this.height);
+
+        //
+        
+        }
+        
+        
+    }
+    this.newPos = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;  
+        if(this.x >= myGameArea.canvas.width - this.width)
+        {
+            this.x = myGameArea.canvas.width - this.width;
+            alert("Game Over");
+                myGameArea.stop();
+        }
+        if(this.x <= 0)
+        {
+            this.x = 0;
+            alert("Game Over");
+                myGameArea.stop();
+        }
+        if(this.y >= myGameArea.canvas.height - this.height)
+        {
+            this.y = myGameArea.canvas.height - this.height;
+            alert("Game Over");
+                myGameArea.stop();
+        }
+        if(this.y <= 0)
+        {
+            this.y = 0;
+            alert("Game Over");
+                myGameArea.stop();
+        }
+        //this.x -=
+    }
+    this.enlarge = function()
+    {
+        this.width += 3;
+        this.height += 3;
+            
+    }
+    this.crashWith = function(otherobj) {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = otherobj.x;
+        var otherright = otherobj.x + (otherobj.width);
+        var othertop = otherobj.y;
+        var otherbottom = otherobj.y + (otherobj.height);
+        var crash = true;
+        
+        if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+            //alert("hi");
+            crash = false;
+        }
+        return crash;
+    }
+}
+
+function updateGameArea() {
+    
+    //document.getElementById("scoreId").innerHTML = "" + score;
+    
+    for (i = 0; i < walls.length; i += 1) {
+        
+            if (walls[i].crashWith(myGamePiece)) {
+                alert("Game Over");
+                myGameArea.stop();
+                
+                return;
+                //var x1 = wishes[i].x;
+                //var y1 = wishes[i].y;
+                //wishes.splice(i, 1);
+                //bullet.splice(j, 1); 
+                //score++;
+                //document.getElementById("scoreId").innerHTML = "" + score;
+                //var img = document.getElementById("happyBday");
+                //ctx.drawImage(img, x1, y1, 30, 30);
+                //var hbd = new component(90, 80, "red", x1, y1, "happyBday");
+                //hbdList.push(hbd);
+                //flag2 = 1;
+            } 
+        
+    }
+    
+    if(cake.crashWith(myGamePiece))
+    {
+        myGamePiece.speedX = 0;
+        myGamePiece.speedY = 0;
+        myGamePiece.x -= 5;
+        
+        //var img = document.getElementById("happyBday");
+        //ctx.drawImage(img, x1, y1, 30, 30);
+        var hbd = new component(90, 80, "red", myGamePiece.x, myGamePiece.y, "happyBday");
+        hbdList.push(hbd);
+        flag2 = 1;
+    }
+    
+    for(i = 0; i < wishes.length; i++)
+    {
+        if(wishes[i].y + wishes[i].height >= myGameArea.canvas.height || wishes[i].crashWith(myGamePiece))
+        {
+            alert("Game Over! Your score - " + score);
+            myGameArea.stop();
+            //return;
+        }
+    }
+    
+    myGameArea.clear();
+    /*if (myGameArea.x && myGameArea.y) {
+        myGamePiece.x = myGameArea.x;
+        myGamePiece.y = myGameArea.y;        
+    }*/
+    myGamePiece.newPos();
+    if(flag2 === 1)
+    {
+        for(i = 0; i < hbdList.length; i++)
+        {
+            hbdList[i].newPos();
+            if(hbdList[i].width >= 200)
+                hbdList.splice(i, 1);
+            else
+                hbdList[i].enlarge();
+        }
+    }
+    if(flag === 1)
+    {
+        for(i = 0; i < bullet.length; i++)
+            bullet[i].newPos();
+    }
+    if(flag1 === 1)
+    {
+        for(i = 0; i < wishes.length; i++)
+            wishes[i].newPos();
+    }
+    
+    
+    myGamePiece.update();
+    cake.update();
+    for(i = 0; i < walls.length; i++)
+        walls[i].update();
+    if(flag2 === 1)
+    {
+        for(i = 0; i < hbdList.length; i++)
+            hbdList[i].update();
+    }
+    if(flag === 1)
+    {
+        for(i = 0; i < bullet.length; i++)
+            bullet[i].update();
+    }
+    if(flag1 === 1)
+    {
+        for(i = 0; i < wishes.length; i++)
+            wishes[i].update();
+    }
+    
+}
+
+function moveup() {
+    myGamePiece.speedX = 0;
+    myGamePiece.speedY = -5; 
+}
+
+function movedown() {
+    myGamePiece.speedX = 0;
+    myGamePiece.speedY = 5; 
+}
+
+function moveleft() {
+    myGamePiece.speedY = 0;
+    myGamePiece.speedX = -5; 
+}
+
+function moveright() {
+    myGamePiece.speedY = 0;
+    myGamePiece.speedX = 5; 
+}
+function shoot()
+{
+    flag = 1;
+    var b = new component(20, 20, "red", myGamePiece.x + myGamePiece.width / 2 - 10, myGamePiece.y - myGamePiece.height, "bullet");
+    b.speedY = -5;
+    bullet.push(b);
+}
+
+function createWishes()
+{
+    flag1 = 1;
+    
+    
+    //for(i = 0; i < 10; i++)
+    //{
+        //console.log("HELLO");
+        setInterval(function(){
+            var wish = new component(60, 60, "red", Math.floor(Math.random() * myGameArea.canvas.width), 0, "balloon");
+            wish.speedY = 1;
+            wishes.push(wish);
+        }, 2000);
+        //console.log("DOG");
+    //}
+}
+</script>
+<img src = "balloon.png" id="balloon" hidden="true"/>
+<img src = "bullet.png" id="bullet" hidden="true"/>
+<img src = "player.png" id="player" hidden="true"/>
+<img src = "cake.png" id="cake" hidden="true"/>
+<img src = "happyBday.png" id="happyBday" hidden="true"/>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <!--<button class="button btn-primary btn-block">Start Game</button>-->
+            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-12" id="gameCanvas">
+            <!--<button class="button btn-primary btn-block">Start Game</button>-->
+            
+        </div>
+    </div>
+    
+    <div class="row">
+        <center>
+        <div class="col-xs-12">
+            <table>
+                <tr>
+                    <td></td>
+                    <td><button type="button" class="button btn-primary" style="width: 50px; height: 50px; border-radius: 50px;" onclick="moveup()">UP</button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="button btn-primary" style="width: 50px; height: 50px; border-radius: 50px;" onclick="moveleft()">LEFT</button></td>
+                    <td></td>
+                    <td><button type="button" class="button btn-primary" style="width: 50px; height: 50px; border-radius: 50px;" onclick="moveright()">RIGHT</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="button" class="button btn-primary" style="width: 50px; height: 50px; border-radius: 50px;" onclick="movedown()">DOWN</button></td>
+                    <td></td>
+                </tr>
+                
+                
+            </table>
+        </div>
+        </center>
+        
+        
+    </div><br>
+    
+    
+    
+    
+    <div class="row">
+        <div class="col-sm-12">
+        <div class="well well-lg">
+            <div class="col-sm-4"><center><a href="#">Terms and conditions</a></center></div>
+            <div class="col-sm-4"><center><a href="#">Send Feedback</a></center></div>
+            <div class="col-sm-4"><center>copyright@swabhi</center></div>
+        </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
